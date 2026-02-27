@@ -15,11 +15,11 @@
                 extend: {
                     colors: {
                         ldc: {
-                            blue: '#0B2046',    // Azul marino más profundo y elegante
-                            light: '#1A3668',   // Azul secundario
-                            gold: '#F4B41A',    // Dorado vibrante
-                            hover: '#FFC83D',   // Dorado claro
-                            gray: '#F3F4F6'     // Fondo suave
+                            blue: '#0B2046',    
+                            light: '#1A3668',   
+                            gold: '#F4B41A',    
+                            hover: '#FFC83D',   
+                            gray: '#F3F4F6'     
                         }
                     },
                     fontFamily: {
@@ -34,35 +34,37 @@
     <!-- Iconos Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Fuentes (Inter para lectura, Montserrat para títulos) -->
+    <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
 
  <link rel="stylesheet" href="styles.css">
 
 </head>
-<body class="flex flex-col min-h-screen antialiased">
+<!-- Agregamos overflow-x-hidden para evitar scroll lateral accidental en móviles -->
+<body class="flex flex-col min-h-screen antialiased overflow-x-hidden">
 
-    <!-- ENCABEZADO FIJO (Siempre oscuro/cristal para contrastar en todas las pestañas) -->
-    <header class="fixed w-full top-0 z-50 bg-ldc-blue/95 backdrop-blur-md shadow-lg py-4 border-b border-white/10">
-        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+    <!-- ENCABEZADO FIJO -->
+    <header class="fixed w-full top-0 z-50 bg-ldc-blue/95 backdrop-blur-md shadow-lg py-3 sm:py-4 border-b border-white/10">
+        <div class="container mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center">
             
             <!-- Logo -->
-            <div onclick="showSection('inicio')" class="flex items-center gap-3 group cursor-pointer">
-                <div class="bg-white p-1.5 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-                    <img src="img/logoliga.png" alt="[Image of Logo]" class="h-10 w-10 md:h-12 md:w-12">
+            <div onclick="showSection('inicio')" class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
+                <div class="bg-white p-1 sm:p-1.5 rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://ui-avatars.com/api/?name=LDC&background=0B2046&color=fff&rounded=true" alt="[Image of Logo]" class="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12">
                 </div>
-                <div class="hidden sm:block">
-                    <h1 class="text-xl font-heading font-black text-white tracking-tight group-hover:text-ldc-gold transition-colors duration-300">LDC CHAGUARPAMBA</h1>
+                <div class="block">
+                    <!-- Texto responsivo: Más pequeño en móviles -->
+                    <h1 class="text-lg sm:text-xl font-heading font-black text-white tracking-tight group-hover:text-ldc-gold transition-colors duration-300">LDC CHAGUARPAMBA</h1>
                 </div>
             </div>
 
             <!-- Menú Desktop -->
-            <nav class="hidden md:flex items-center space-x-8">
-                <button onclick="showSection('inicio')" id="btn-inicio" class="nav-btn active-tab font-heading text-white font-semibold transition-colors text-sm uppercase tracking-wider">Inicio</button>
-                <button onclick="showSection('nosotros')" id="btn-nosotros" class="nav-btn font-heading text-white hover:text-ldc-gold font-semibold transition-colors text-sm uppercase tracking-wider">Nosotros</button>
-                <button onclick="showSection('disciplinas')" id="btn-disciplinas" class="nav-btn font-heading text-white hover:text-ldc-gold font-semibold transition-colors text-sm uppercase tracking-wider">Disciplinas</button>
-                <button onclick="showSection('directiva')" id="btn-directiva" class="nav-btn font-heading text-white hover:text-ldc-gold font-semibold transition-colors text-sm uppercase tracking-wider">Directiva</button>
-                <button onclick="showSection('contacto')" id="btn-contacto" class="bg-ldc-gold text-ldc-blue px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-white hover:shadow-lg transition-all transform hover:-translate-y-0.5 ml-4">Contacto</button>
+            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                <button onclick="showSection('inicio')" id="btn-inicio" class="nav-btn active-tab font-heading text-white font-semibold transition-colors text-xs lg:text-sm uppercase tracking-wider">Inicio</button>
+                <button onclick="showSection('nosotros')" id="btn-nosotros" class="nav-btn font-heading text-white hover:text-ldc-gold font-semibold transition-colors text-xs lg:text-sm uppercase tracking-wider">Nosotros</button>
+                <button onclick="showSection('disciplinas')" id="btn-disciplinas" class="nav-btn font-heading text-white hover:text-ldc-gold font-semibold transition-colors text-xs lg:text-sm uppercase tracking-wider">Disciplinas</button>
+                <button onclick="showSection('directiva')" id="btn-directiva" class="nav-btn font-heading text-white hover:text-ldc-gold font-semibold transition-colors text-xs lg:text-sm uppercase tracking-wider">Directiva</button>
+                <button onclick="showSection('contacto')" id="btn-contacto" class="bg-ldc-gold text-ldc-blue px-4 lg:px-6 py-2 lg:py-2.5 rounded-full font-bold text-xs lg:text-sm uppercase tracking-wider hover:bg-white hover:shadow-lg transition-all transform hover:-translate-y-0.5 ml-2">Contacto</button>
             </nav>
 
             <!-- Menú Móvil Botón -->
@@ -72,19 +74,20 @@
         </div>
 
         <!-- Menú Móvil Desplegable -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-ldc-light shadow-xl border-t border-white/10">
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-ldc-light shadow-xl border-t border-white/10 max-h-[80vh] overflow-y-auto">
             <div class="flex flex-col px-6 py-4 space-y-4">
-                <button onclick="showSection('inicio'); toggleMobileMenu()" class="text-left text-white hover:text-ldc-gold font-heading font-bold text-lg">Inicio</button>
-                <button onclick="showSection('nosotros'); toggleMobileMenu()" class="text-left text-white hover:text-ldc-gold font-heading font-bold text-lg">Nosotros</button>
-                <button onclick="showSection('disciplinas'); toggleMobileMenu()" class="text-left text-white hover:text-ldc-gold font-heading font-bold text-lg">Disciplinas</button>
-                <button onclick="showSection('directiva'); toggleMobileMenu()" class="text-left text-white hover:text-ldc-gold font-heading font-bold text-lg">Directiva</button>
-                <button onclick="showSection('contacto'); toggleMobileMenu()" class="text-left text-ldc-gold font-heading font-bold text-lg">Contacto</button>
+                <button onclick="showSection('inicio'); toggleMobileMenu()" class="text-left text-white hover:text-ldc-gold font-heading font-bold text-lg py-2">Inicio</button>
+                <button onclick="showSection('nosotros'); toggleMobileMenu()" class="text-left text-white hover:text-ldc-gold font-heading font-bold text-lg py-2">Nosotros</button>
+                <button onclick="showSection('disciplinas'); toggleMobileMenu()" class="text-left text-white hover:text-ldc-gold font-heading font-bold text-lg py-2">Disciplinas</button>
+                <button onclick="showSection('directiva'); toggleMobileMenu()" class="text-left text-white hover:text-ldc-gold font-heading font-bold text-lg py-2">Directiva</button>
+                <button onclick="showSection('contacto'); toggleMobileMenu()" class="text-left text-ldc-gold font-heading font-bold text-lg py-2">Contacto</button>
             </div>
         </div>
     </header>
 
     <!-- CONTENEDOR PRINCIPAL -->
-    <main class="flex-grow pt-20 md:pt-24"> <!-- pt-24 da espacio para el header fijo -->
+    <!-- pt-16 para móviles, pt-24 para PC -->
+    <main class="flex-grow pt-16 md:pt-24"> 
 
         <!-- ==========================================
              SECCIÓN 1: INICIO (HERO) 
@@ -93,37 +96,34 @@
             
             <!-- VIDEO DE FONDO -->
             <div class="absolute inset-0 w-full h-full overflow-hidden z-0 bg-ldc-blue">
-                <!-- 
-                  Para usar tu propio video, cambia el 'src' a la ruta de tu archivo, ej: "video/mi-fondo.mp4".
-                  El atributo 'poster' muestra una imagen mientras el video carga.
-                -->
-                <video autoplay loop muted playsinline poster="https://civideportes.com.co/wp-content/uploads/2019/08/Cancha-de-f%C3%BAtbol-11.jpg" class="absolute top-0 left-0 w-full h-full object-cover">
-                    <!-- Video deportivo de ejemplo -->
+                <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1579952363873-27f3bde9be2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" class="absolute top-0 left-0 w-full h-full object-cover">
                     <source src="https://cdn.pixabay.com/video/2021/08/21/85847-591741162_large.mp4" type="video/mp4">
                     Tu navegador no soporta videos HTML5.
                 </video>
-                <!-- Capa oscura degradada (Overlay) para asegurar que las letras blancas se lean perfectamente -->
                 <div class="absolute inset-0 bg-gradient-to-r from-ldc-blue/95 via-ldc-blue/70 to-transparent"></div>
             </div>
 
             <!-- CONTENIDO DEL HERO -->
             <div class="relative z-10 min-h-[85vh] flex items-center">
-                <div class="container mx-auto px-6 md:px-12 text-center md:text-left py-20">
-                    <div class="max-w-3xl">
-                        <span class="inline-block py-1 px-3 rounded-full bg-ldc-gold/20 text-ldc-gold border border-ldc-gold/30 font-bold text-sm tracking-widest mb-6 uppercase">
+                <!-- Padding reducido en móviles (py-12) y normal en PC (py-20) -->
+                <div class="container mx-auto px-4 sm:px-6 md:px-12 text-center md:text-left py-12 md:py-20">
+                    <div class="max-w-3xl mx-auto md:mx-0">
+                        <span class="inline-block py-1 px-3 rounded-full bg-ldc-gold/20 text-ldc-gold border border-ldc-gold/30 font-bold text-xs sm:text-sm tracking-widest mb-4 sm:mb-6 uppercase">
                             Deporte Formativo
                         </span>
-                        <h2 class="text-5xl md:text-7xl font-black text-white font-heading leading-tight mb-6 drop-shadow-lg">
+                        <!-- Títulos escalables: text-4xl(móvil) -> 5xl(tablet) -> 7xl(PC) -->
+                        <h2 class="text-4xl sm:text-5xl md:text-7xl font-black text-white font-heading leading-tight mb-4 sm:mb-6 drop-shadow-lg">
                             Forjando <span class="text-transparent bg-clip-text bg-gradient-to-r from-ldc-gold to-yellow-200">Campeones</span><br>en Chaguarpamba.
                         </h2>
-                        <p class="text-lg md:text-2xl text-gray-200 mb-10 font-light max-w-2xl leading-relaxed">
+                        <p class="text-base sm:text-lg md:text-2xl text-gray-200 mb-8 sm:mb-10 font-light max-w-2xl leading-relaxed mx-auto md:mx-0">
                             Disciplina, pasión y orgullo cantonal. Únete a nuestras escuelas formativas y representa a tu tierra.
                         </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                            <button onclick="showSection('disciplinas')" class="bg-ldc-gold text-ldc-blue px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center">
+                        <!-- Botones adaptables: ocupan el ancho completo (w-full) en móviles -->
+                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
+                            <button onclick="showSection('disciplinas')" class="w-full sm:w-auto bg-ldc-gold text-ldc-blue px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-white transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center">
                                 Ver Disciplinas
                             </button>
-                            <button onclick="showSection('contacto')" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-ldc-blue transition-all text-center flex justify-center items-center gap-2 backdrop-blur-sm">
+                            <button onclick="showSection('contacto')" class="w-full sm:w-auto border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-white hover:text-ldc-blue transition-all text-center flex justify-center items-center gap-2 backdrop-blur-sm">
                                 <i data-lucide="play-circle" class="w-5 h-5"></i> Contáctanos
                             </button>
                         </div>
@@ -131,78 +131,79 @@
                 </div>
             </div>
 
-            <!-- FRANJA DE IMPACTO (Dentro de Inicio) -->
-            <div class="bg-ldc-blue py-10 relative z-10 -mt-12 mx-4 md:mx-12 rounded-2xl shadow-2xl">
-                <div class="container mx-auto px-4">
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x divide-white/10">
-                        <div class="p-4">
-                            <h4 class="text-4xl font-black text-ldc-gold mb-1">6</h4>
-                            <p class="text-white text-sm font-medium uppercase tracking-wider">Disciplinas</p>
+            <!-- FRANJA DE IMPACTO -->
+            <!-- Ajuste de margen negativo superior para que no monte demasiado en móviles -->
+            <div class="bg-ldc-blue py-6 sm:py-10 relative z-10 -mt-6 sm:-mt-12 mx-4 sm:mx-8 md:mx-12 rounded-2xl shadow-2xl">
+                <div class="container mx-auto px-2 sm:px-4">
+                    <!-- En móviles (grid-cols-2), en PC (lg:grid-cols-4) -->
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-center divide-x divide-white/10">
+                        <div class="p-2 sm:p-4">
+                            <h4 class="text-3xl sm:text-4xl font-black text-ldc-gold mb-1">6</h4>
+                            <p class="text-white text-xs sm:text-sm font-medium uppercase tracking-wider">Disciplinas</p>
                         </div>
-                        <div class="p-4">
-                            <h4 class="text-4xl font-black text-ldc-gold mb-1">+500</h4>
-                            <p class="text-white text-sm font-medium uppercase tracking-wider">Deportistas</p>
+                        <div class="p-2 sm:p-4">
+                            <h4 class="text-3xl sm:text-4xl font-black text-ldc-gold mb-1">+500</h4>
+                            <p class="text-white text-xs sm:text-sm font-medium uppercase tracking-wider">Deportistas</p>
                         </div>
-                        <div class="p-4">
-                            <h4 class="text-4xl font-black text-ldc-gold mb-1">10</h4>
-                            <p class="text-white text-sm font-medium uppercase tracking-wider">Entrenadores</p>
+                        <div class="p-2 sm:p-4">
+                            <h4 class="text-3xl sm:text-4xl font-black text-ldc-gold mb-1">10</h4>
+                            <p class="text-white text-xs sm:text-sm font-medium uppercase tracking-wider">Entrenadores</p>
                         </div>
-                        <div class="p-4">
-                            <h4 class="text-4xl font-black text-ldc-gold mb-1">1</h4>
-                            <p class="text-white text-sm font-medium uppercase tracking-wider">Pasión</p>
+                        <div class="p-2 sm:p-4">
+                            <h4 class="text-3xl sm:text-4xl font-black text-ldc-gold mb-1">1</h4>
+                            <p class="text-white text-xs sm:text-sm font-medium uppercase tracking-wider">Pasión</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Espaciado inferior para compensar la franja negativa -->
-            <div class="pb-16"></div>
+            <div class="pb-10 sm:pb-16"></div>
         </section>
 
         <!-- ==========================================
-             SECCIÓN 2: NOSOTROS (Misión y Visión)
+             SECCIÓN 2: NOSOTROS
              ========================================== -->
-        <section id="nosotros" class="section-animate hidden py-16 md:py-24 bg-[#FAFAFA] relative overflow-hidden">
-            <!-- Textura de fondo dinámica -->
+        <!-- Paddings reducidos en móviles (py-12) -->
+        <section id="nosotros" class="section-animate hidden py-12 sm:py-16 md:py-24 bg-[#FAFAFA] relative overflow-hidden">
             <div class="absolute inset-0 opacity-[0.03] z-0 pointer-events-none" style="background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; background-attachment: fixed;"></div>
             
-            <div class="container mx-auto px-6 md:px-12 relative z-10">
-                <div class="text-center max-w-3xl mx-auto mb-16 stagger-1">
-                    <h3 class="text-ldc-gold font-bold uppercase tracking-widest text-sm mb-2">Institucional</h3>
-                    <h2 class="text-4xl md:text-5xl font-black text-ldc-blue font-heading">Nuestra Razón de Ser</h2>
-                    <div class="w-20 h-1.5 bg-ldc-gold mx-auto mt-6 rounded-full"></div>
+            <div class="container mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16 stagger-1">
+                    <h3 class="text-ldc-gold font-bold uppercase tracking-widest text-xs sm:text-sm mb-2">Institucional</h3>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-ldc-blue font-heading">Nuestra Razón de Ser</h2>
+                    <div class="w-16 sm:w-20 h-1.5 bg-ldc-gold mx-auto mt-4 sm:mt-6 rounded-full"></div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <!-- Textos -->
-                    <div class="space-y-10">
-                        <div class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow border border-gray-100 stagger-2">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="bg-blue-50 p-3 rounded-2xl text-ldc-blue">
-                                    <i data-lucide="target" class="w-8 h-8"></i>
+                <div class="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+                    <div class="space-y-6 sm:space-y-10">
+                        <!-- Paddings adaptativos en tarjetas p-6 -> p-8 -->
+                        <div class="bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-[1.5rem] sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow border border-gray-100 stagger-2">
+                            <div class="flex items-center gap-3 sm:gap-4 mb-4">
+                                <div class="bg-blue-50 p-2 sm:p-3 rounded-xl sm:rounded-2xl text-ldc-blue">
+                                    <i data-lucide="target" class="w-6 h-6 sm:w-8 sm:h-8"></i>
                                 </div>
-                                <h3 class="text-2xl font-bold text-ldc-blue font-heading">Misión</h3>
+                                <h3 class="text-xl sm:text-2xl font-bold text-ldc-blue font-heading">Misión</h3>
                             </div>
-                            <p class="text-gray-600 leading-relaxed text-lg">
+                            <p class="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
                                 Promover y masificar la práctica deportiva en el cantón Chaguarpamba, ofreciendo espacios de formación integral para niños y jóvenes. Fomentamos valores como la disciplina, el trabajo en equipo y la excelencia, bajo una gestión transparente.
                             </p>
                         </div>
 
-                        <div class="bg-white/90 backdrop-blur-sm p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow border border-gray-100 stagger-3">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="bg-yellow-50 p-3 rounded-2xl text-ldc-gold">
-                                    <i data-lucide="eye" class="w-8 h-8"></i>
+                        <div class="bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-[1.5rem] sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow border border-gray-100 stagger-3">
+                            <div class="flex items-center gap-3 sm:gap-4 mb-4">
+                                <div class="bg-yellow-50 p-2 sm:p-3 rounded-xl sm:rounded-2xl text-ldc-gold">
+                                    <i data-lucide="eye" class="w-6 h-6 sm:w-8 sm:h-8"></i>
                                 </div>
-                                <h3 class="text-2xl font-bold text-ldc-blue font-heading">Visión</h3>
+                                <h3 class="text-xl sm:text-2xl font-bold text-ldc-blue font-heading">Visión</h3>
                             </div>
-                            <p class="text-gray-600 leading-relaxed text-lg">
+                            <p class="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
                                 Ser reconocidos a nivel provincial y nacional como una institución líder en la formación de talentos deportivos, siendo un referente de organización y desarrollo social a través del deporte cantonal.
                             </p>
                         </div>
                     </div>
-                    <!-- Imagen decorativa -->
+                    
                     <div class="relative hidden md:block stagger-4">
                         <div class="absolute inset-0 bg-ldc-blue rounded-[3rem] transform translate-x-4 translate-y-4"></div>
-                        <img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="" class="relative rounded-[3rem] shadow-2xl z-10 w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                        <img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="" class="relative rounded-[3rem] shadow-2xl z-10 w-full h-[400px] lg:h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
                     </div>
                 </div>
             </div>
@@ -211,129 +212,141 @@
         <!-- ==========================================
              SECCIÓN 3: DISCIPLINAS
              ========================================== -->
-        <section id="disciplinas" class="section-animate hidden py-16 md:py-24 bg-white relative overflow-hidden">
-            <!-- Textura de fondo dinámica deportiva -->
+        <section id="disciplinas" class="section-animate hidden py-12 sm:py-16 md:py-24 bg-white relative overflow-hidden">
             <div class="absolute inset-0 opacity-[0.04] z-0 pointer-events-none" style="background-image: url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; background-attachment: fixed;"></div>
 
-            <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <div class="container mx-auto px-4 sm:px-6 md:px-12 relative z-10">
                 
-                <div class="flex flex-col md:flex-row justify-between items-end mb-16 stagger-1">
-                    <div class="max-w-2xl">
-                        <h3 class="text-ldc-gold font-bold uppercase tracking-widest text-sm mb-2">Escuelas Formativas</h3>
-                        <h2 class="text-4xl md:text-5xl font-black text-ldc-blue font-heading">Disciplinas Deportivas</h2>
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 stagger-1">
+                    <div class="max-w-2xl text-center md:text-left mx-auto md:mx-0">
+                        <h3 class="text-ldc-gold font-bold uppercase tracking-widest text-xs sm:text-sm mb-2">Escuelas Formativas</h3>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-ldc-blue font-heading">Disciplinas Deportivas</h2>
                     </div>
-                    <p class="text-gray-500 mt-4 md:mt-0 max-w-md md:text-right">
+                    <p class="text-gray-500 mt-4 md:mt-0 max-w-md text-center md:text-right text-sm sm:text-base mx-auto md:mx-0">
                         Instalaciones de primer nivel y profesionales capacitados para desarrollar tu máximo potencial.
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Grid adaptativo: 1 columna (móvil), 2 (tablet), 3 (PC) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     
                     <!-- Fútbol -->
-                    <div class="group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100 stagger-1">
-                        <div class="h-64 relative overflow-hidden">
+                    <div class="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100 stagger-1 flex flex-col">
+                        <div class="h-48 sm:h-56 relative overflow-hidden shrink-0">
                             <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="[Image of Fútbol]" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                <button onclick="contactWhatsApp('Fútbol')" class="w-full bg-ldc-gold text-ldc-blue font-bold py-3 rounded-xl hover:bg-white transition-colors shadow-lg">Inscribirse Ahora</button>
+                                <button onclick="contactWhatsApp('Fútbol')" class="w-full bg-ldc-gold text-ldc-blue font-bold py-3 rounded-xl hover:bg-white transition-colors shadow-lg hidden md:block">Inscribirse Ahora</button>
                             </div>
                         </div>
-                        <div class="p-8">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-2xl font-black text-ldc-blue font-heading">Fútbol</h3>
-                                <i data-lucide="goal" class="text-ldc-gold w-6 h-6"></i>
+                        <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-3 sm:mb-4">
+                                    <h3 class="text-xl sm:text-2xl font-black text-ldc-blue font-heading">Fútbol</h3>
+                                    <i data-lucide="goal" class="text-ldc-gold w-5 h-5 sm:w-6 sm:h-6"></i>
+                                </div>
+                                <p class="text-gray-600 text-sm sm:text-base">Categorías desde Sub-8 hasta Sub-18. Entrenamientos tácticos y físicos en el estadio cantonal.</p>
                             </div>
-                            <p class="text-gray-600">Categorías desde Sub-8 hasta Sub-18. Entrenamientos tácticos y físicos en el estadio cantonal.</p>
-                            <button onclick="contactWhatsApp('Fútbol')" class="mt-6 w-full lg:hidden bg-ldc-blue text-white font-bold py-3 rounded-xl">Inscribirse</button>
+                            <button onclick="contactWhatsApp('Fútbol')" class="mt-6 w-full md:hidden bg-ldc-blue text-white font-bold py-3 rounded-xl text-sm transition-colors hover:bg-ldc-light">Inscribirse</button>
                         </div>
                     </div>
 
                     <!-- Baloncesto -->
-                    <div class="group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100 stagger-2">
-                        <div class="h-64 relative overflow-hidden">
+                    <div class="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100 stagger-2 flex flex-col">
+                        <div class="h-48 sm:h-56 relative overflow-hidden shrink-0">
                             <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="[Image of Baloncesto]" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                <button onclick="contactWhatsApp('Baloncesto')" class="w-full bg-ldc-gold text-ldc-blue font-bold py-3 rounded-xl hover:bg-white transition-colors shadow-lg">Inscribirse Ahora</button>
+                                <button onclick="contactWhatsApp('Baloncesto')" class="w-full bg-ldc-gold text-ldc-blue font-bold py-3 rounded-xl hover:bg-white transition-colors shadow-lg hidden md:block">Inscribirse Ahora</button>
                             </div>
                         </div>
-                        <div class="p-8">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-2xl font-black text-ldc-blue font-heading">Baloncesto</h3>
-                                <i data-lucide="dribbble" class="text-orange-500 w-6 h-6"></i>
+                        <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-3 sm:mb-4">
+                                    <h3 class="text-xl sm:text-2xl font-black text-ldc-blue font-heading">Baloncesto</h3>
+                                    <i data-lucide="dribbble" class="text-orange-500 w-5 h-5 sm:w-6 sm:h-6"></i>
+                                </div>
+                                <p class="text-gray-600 text-sm sm:text-base">Desarrolla agilidad y trabajo en equipo. Escuela permanente para niños y jóvenes en el coliseo municipal.</p>
                             </div>
-                            <p class="text-gray-600">Desarrolla agilidad y trabajo en equipo. Escuela permanente para niños y jóvenes en el coliseo municipal.</p>
-                            <button onclick="contactWhatsApp('Baloncesto')" class="mt-6 w-full lg:hidden bg-ldc-blue text-white font-bold py-3 rounded-xl">Inscribirse</button>
+                            <button onclick="contactWhatsApp('Baloncesto')" class="mt-6 w-full md:hidden bg-ldc-blue text-white font-bold py-3 rounded-xl text-sm transition-colors hover:bg-ldc-light">Inscribirse</button>
                         </div>
                     </div>
 
-                    <!-- Ajedrez (NUEVO) -->
-                    <div class="group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100 stagger-3">
-                        <div class="h-64 relative overflow-hidden">
+                    <!-- Ajedrez -->
+                    <div class="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100 stagger-3 flex flex-col">
+                        <div class="h-48 sm:h-56 relative overflow-hidden shrink-0">
                             <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                <button onclick="contactWhatsApp('Ajedrez')" class="w-full bg-ldc-gold text-ldc-blue font-bold py-3 rounded-xl hover:bg-white transition-colors shadow-lg">Inscribirse Ahora</button>
+                                <button onclick="contactWhatsApp('Ajedrez')" class="w-full bg-ldc-gold text-ldc-blue font-bold py-3 rounded-xl hover:bg-white transition-colors shadow-lg hidden md:block">Inscribirse Ahora</button>
                             </div>
                         </div>
-                        <div class="p-8">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-2xl font-black text-ldc-blue font-heading">Ajedrez</h3>
-                                <i data-lucide="crown" class="text-purple-600 w-6 h-6"></i>
+                        <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-3 sm:mb-4">
+                                    <h3 class="text-xl sm:text-2xl font-black text-ldc-blue font-heading">Ajedrez</h3>
+                                    <i data-lucide="crown" class="text-purple-600 w-5 h-5 sm:w-6 sm:h-6"></i>
+                                </div>
+                                <p class="text-gray-600 text-sm sm:text-base">Deporte ciencia. Desarrolla el pensamiento estratégico, concentración y agilidad mental desde temprana edad.</p>
                             </div>
-                            <p class="text-gray-600">Deporte ciencia. Desarrolla el pensamiento estratégico, concentración y agilidad mental desde temprana edad.</p>
-                            <button onclick="contactWhatsApp('Ajedrez')" class="mt-6 w-full lg:hidden bg-ldc-blue text-white font-bold py-3 rounded-xl">Inscribirse</button>
+                            <button onclick="contactWhatsApp('Ajedrez')" class="mt-6 w-full md:hidden bg-ldc-blue text-white font-bold py-3 rounded-xl text-sm transition-colors hover:bg-ldc-light">Inscribirse</button>
                         </div>
                     </div>
 
-                    <!-- Natación (NUEVO) -->
-                    <div class="group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100 stagger-4">
-                        <div class="h-64 relative overflow-hidden">
+                    <!-- Natación -->
+                    <div class="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100 stagger-4 flex flex-col">
+                        <div class="h-48 sm:h-56 relative overflow-hidden shrink-0">
                             <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                <button onclick="contactWhatsApp('Natación')" class="w-full bg-ldc-gold text-ldc-blue font-bold py-3 rounded-xl hover:bg-white transition-colors shadow-lg">Inscribirse Ahora</button>
+                                <button onclick="contactWhatsApp('Natación')" class="w-full bg-ldc-gold text-ldc-blue font-bold py-3 rounded-xl hover:bg-white transition-colors shadow-lg hidden md:block">Inscribirse Ahora</button>
                             </div>
                         </div>
-                        <div class="p-8">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-2xl font-black text-ldc-blue font-heading">Natación</h3>
-                                <i data-lucide="waves" class="text-blue-500 w-6 h-6"></i>
+                        <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-3 sm:mb-4">
+                                    <h3 class="text-xl sm:text-2xl font-black text-ldc-blue font-heading">Natación</h3>
+                                    <i data-lucide="waves" class="text-blue-500 w-5 h-5 sm:w-6 sm:h-6"></i>
+                                </div>
+                                <p class="text-gray-600 text-sm sm:text-base">Entrenamiento completo y resistencia cardiovascular. Cursos formativos continuos para todas las edades.</p>
                             </div>
-                            <p class="text-gray-600">Entrenamiento completo y resistencia cardiovascular. Cursos formativos continuos para todas las edades.</p>
-                            <button onclick="contactWhatsApp('Natación')" class="mt-6 w-full lg:hidden bg-ldc-blue text-white font-bold py-3 rounded-xl">Inscribirse</button>
+                            <button onclick="contactWhatsApp('Natación')" class="mt-6 w-full md:hidden bg-ldc-blue text-white font-bold py-3 rounded-xl text-sm transition-colors hover:bg-ldc-light">Inscribirse</button>
                         </div>
                     </div>
 
-                    <!-- Lucha (NUEVO) -->
-                    <div class="group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100 stagger-5">
-                        <div class="h-64 relative overflow-hidden">
+                    <!-- Lucha -->
+                    <div class="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100 stagger-5 flex flex-col">
+                        <div class="h-48 sm:h-56 relative overflow-hidden shrink-0">
                             <img src="https://images.unsplash.com/photo-1614510065609-8472f854be7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                <button onclick="contactWhatsApp('Lucha')" class="w-full bg-ldc-gold text-ldc-blue font-bold py-3 rounded-xl hover:bg-white transition-colors shadow-lg">Inscribirse Ahora</button>
+                                <button onclick="contactWhatsApp('Lucha')" class="w-full bg-ldc-gold text-ldc-blue font-bold py-3 rounded-xl hover:bg-white transition-colors shadow-lg hidden md:block">Inscribirse Ahora</button>
                             </div>
                         </div>
-                        <div class="p-8">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-2xl font-black text-ldc-blue font-heading">Lucha</h3>
-                                <i data-lucide="swords" class="text-red-600 w-6 h-6"></i>
+                        <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-3 sm:mb-4">
+                                    <h3 class="text-xl sm:text-2xl font-black text-ldc-blue font-heading">Lucha</h3>
+                                    <i data-lucide="swords" class="text-red-600 w-5 h-5 sm:w-6 sm:h-6"></i>
+                                </div>
+                                <p class="text-gray-600 text-sm sm:text-base">Disciplina olímpica de combate. Fomenta la fuerza física, el respeto, la táctica y el control corporal total.</p>
                             </div>
-                            <p class="text-gray-600">Disciplina olímpica de combate. Fomenta la fuerza física, el respeto, la táctica y el control corporal total.</p>
-                            <button onclick="contactWhatsApp('Lucha')" class="mt-6 w-full lg:hidden bg-ldc-blue text-white font-bold py-3 rounded-xl">Inscribirse</button>
+                            <button onclick="contactWhatsApp('Lucha')" class="mt-6 w-full md:hidden bg-ldc-blue text-white font-bold py-3 rounded-xl text-sm transition-colors hover:bg-ldc-light">Inscribirse</button>
                         </div>
                     </div>
 
                     <!-- Ecuavoley -->
-                    <div class="group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100 stagger-6">
-                        <div class="h-64 relative overflow-hidden">
+                    <div class="group rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100 stagger-6 flex flex-col">
+                        <div class="h-48 sm:h-56 relative overflow-hidden shrink-0">
                             <img src="https://images.unsplash.com/photo-1612872087720-48ca45e4c6c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                <button onclick="contactWhatsApp('Ecuavoley')" class="w-full bg-ldc-gold text-ldc-blue font-bold py-3 rounded-xl hover:bg-white transition-colors shadow-lg">Inscribirse Ahora</button>
+                                <button onclick="contactWhatsApp('Ecuavoley')" class="w-full bg-ldc-gold text-ldc-blue font-bold py-3 rounded-xl hover:bg-white transition-colors shadow-lg hidden md:block">Inscribirse Ahora</button>
                             </div>
                         </div>
-                        <div class="p-8">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-2xl font-black text-ldc-blue font-heading">Ecuavoley</h3>
-                                <i data-lucide="activity" class="text-ldc-blue w-6 h-6"></i>
+                        <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-3 sm:mb-4">
+                                    <h3 class="text-xl sm:text-2xl font-black text-ldc-blue font-heading">Ecuavoley</h3>
+                                    <i data-lucide="activity" class="text-ldc-blue w-5 h-5 sm:w-6 sm:h-6"></i>
+                                </div>
+                                <p class="text-gray-600 text-sm sm:text-base">Apoyo al deporte tradicional. Organización de torneos interbarriales y fomento de técnica deportiva.</p>
                             </div>
-                            <p class="text-gray-600">Apoyo al deporte tradicional. Organización de torneos interbarriales y fomento de técnica deportiva.</p>
-                            <button onclick="contactWhatsApp('Ecuavoley')" class="mt-6 w-full lg:hidden bg-ldc-blue text-white font-bold py-3 rounded-xl">Inscribirse</button>
+                            <button onclick="contactWhatsApp('Ecuavoley')" class="mt-6 w-full md:hidden bg-ldc-blue text-white font-bold py-3 rounded-xl text-sm transition-colors hover:bg-ldc-light">Inscribirse</button>
                         </div>
                     </div>
 
@@ -344,45 +357,45 @@
         <!-- ==========================================
              SECCIÓN 4: DIRECTIVA
              ========================================== -->
-        <section id="directiva" class="section-animate hidden py-16 md:py-24 bg-[#FAFAFA] relative overflow-hidden">
-            <!-- Textura de fondo institucional -->
+        <section id="directiva" class="section-animate hidden py-12 sm:py-16 md:py-24 bg-[#FAFAFA] relative overflow-hidden">
             <div class="absolute inset-0 opacity-[0.03] z-0 pointer-events-none" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;"></div>
 
-            <div class="container mx-auto px-6 md:px-12 relative z-10">
-                <div class="text-center max-w-3xl mx-auto mb-16 stagger-1">
-                    <h3 class="text-ldc-gold font-bold uppercase tracking-widest text-sm mb-2">Liderazgo</h3>
-                    <h2 class="text-4xl md:text-5xl font-black text-ldc-blue font-heading">Directorio Institucional</h2>
-                    <div class="w-20 h-1.5 bg-ldc-gold mx-auto mt-6 rounded-full"></div>
+            <div class="container mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16 stagger-1">
+                    <h3 class="text-ldc-gold font-bold uppercase tracking-widest text-xs sm:text-sm mb-2">Liderazgo</h3>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-ldc-blue font-heading">Directorio Institucional</h2>
+                    <div class="w-16 sm:w-20 h-1.5 bg-ldc-gold mx-auto mt-4 sm:mt-6 rounded-full"></div>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-10">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10">
                     
                     <!-- Presidente -->
-                    <div class="bg-white/90 backdrop-blur-sm rounded-[2rem] p-8 text-center shadow-md border border-gray-100 hover:-translate-y-3 transition-transform duration-300 stagger-2">
-                        <div class="w-32 h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-ldc-gold to-ldc-blue mb-6">
-                            <img src="https://ui-avatars.com/api/?name=PR&background=fff&color=0B2046&size=200" alt="" class="w-full h-full rounded-full border-4 border-white object-cover">
+                    <div class="bg-white/90 backdrop-blur-sm rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 text-center shadow-md border border-gray-100 hover:-translate-y-2 transition-transform duration-300 stagger-2">
+                        <div class="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-ldc-gold to-ldc-blue mb-4 sm:mb-6">
+                            <img src="https://ui-avatars.com/api/?name=PR&background=fff&color=0B2046&size=200" alt="" class="w-full h-full rounded-full border-2 sm:border-4 border-white object-cover">
                         </div>
-                        <h4 class="text-xl font-black text-ldc-blue font-heading mb-1">Nombre Apellido</h4>
-                        <p class="text-ldc-gold font-bold uppercase text-xs tracking-widest mb-4">Presidente</p>
-                        <p class="text-gray-500 text-sm">"Trabajamos incansablemente para que nuestros jóvenes tengan las mejores oportunidades."</p>
+                        <h4 class="text-lg sm:text-xl font-black text-ldc-blue font-heading mb-1">Nombre Apellido</h4>
+                        <p class="text-ldc-gold font-bold uppercase text-xs tracking-widest mb-3 sm:mb-4">Presidente</p>
+                        <p class="text-gray-500 text-xs sm:text-sm">"Trabajamos incansablemente para que nuestros jóvenes tengan las mejores oportunidades."</p>
                     </div>
 
                     <!-- Vicepresidente -->
-                    <div class="bg-white/90 backdrop-blur-sm rounded-[2rem] p-8 text-center shadow-md border border-gray-100 hover:-translate-y-3 transition-transform duration-300 stagger-3">
-                        <div class="w-32 h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-gray-200 to-gray-400 mb-6">
-                            <img src="https://ui-avatars.com/api/?name=VI&background=fff&color=0B2046&size=200" alt="" class="w-full h-full rounded-full border-4 border-white object-cover">
+                    <div class="bg-white/90 backdrop-blur-sm rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 text-center shadow-md border border-gray-100 hover:-translate-y-2 transition-transform duration-300 stagger-3">
+                        <div class="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-gray-200 to-gray-400 mb-4 sm:mb-6">
+                            <img src="https://ui-avatars.com/api/?name=VI&background=fff&color=0B2046&size=200" alt="" class="w-full h-full rounded-full border-2 sm:border-4 border-white object-cover">
                         </div>
-                        <h4 class="text-xl font-black text-ldc-blue font-heading mb-1">Nombre Apellido</h4>
-                        <p class="text-gray-500 font-bold uppercase text-xs tracking-widest mb-4">Vicepresidente</p>
+                        <h4 class="text-lg sm:text-xl font-black text-ldc-blue font-heading mb-1">Nombre Apellido</h4>
+                        <p class="text-gray-500 font-bold uppercase text-xs tracking-widest mb-3 sm:mb-4">Vicepresidente</p>
                     </div>
 
                     <!-- Secretario -->
-                    <div class="bg-white/90 backdrop-blur-sm rounded-[2rem] p-8 text-center shadow-md border border-gray-100 hover:-translate-y-3 transition-transform duration-300 stagger-4">
-                        <div class="w-32 h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-gray-200 to-gray-400 mb-6">
-                            <img src="https://ui-avatars.com/api/?name=SE&background=fff&color=0B2046&size=200" alt="" class="w-full h-full rounded-full border-4 border-white object-cover">
+                    <!-- En móviles con grid de 2, el 3ro se centra usando clases adaptables o dejándolo fluir -->
+                    <div class="bg-white/90 backdrop-blur-sm rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 text-center shadow-md border border-gray-100 hover:-translate-y-2 transition-transform duration-300 stagger-4 sm:col-span-2 md:col-span-1">
+                        <div class="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-gray-200 to-gray-400 mb-4 sm:mb-6">
+                            <img src="https://ui-avatars.com/api/?name=SE&background=fff&color=0B2046&size=200" alt="" class="w-full h-full rounded-full border-2 sm:border-4 border-white object-cover">
                         </div>
-                        <h4 class="text-xl font-black text-ldc-blue font-heading mb-1">Nombre Apellido</h4>
-                        <p class="text-gray-500 font-bold uppercase text-xs tracking-widest mb-4">Secretaria/o</p>
+                        <h4 class="text-lg sm:text-xl font-black text-ldc-blue font-heading mb-1">Nombre Apellido</h4>
+                        <p class="text-gray-500 font-bold uppercase text-xs tracking-widest mb-3 sm:mb-4">Secretaria/o</p>
                     </div>
 
                 </div>
@@ -393,53 +406,57 @@
              SECCIÓN 5: CONTACTO
              ========================================== -->
         <section id="contacto" class="section-animate hidden py-0">
-            <!-- Usamos un diseño dividido (Split Layout) -->
+            <!-- Flex-col para móviles, flex-row desde pantallas lg (computadoras grandes) -->
             <div class="flex flex-col lg:flex-row shadow-xl">
                 
-                <!-- Info -->
-                <div class="lg:w-1/2 bg-ldc-blue text-white px-8 py-20 lg:px-24 flex flex-col justify-center">
-                    <h3 class="text-ldc-gold font-bold uppercase tracking-widest text-sm mb-2">Comunícate</h3>
-                    <h2 class="text-4xl md:text-5xl font-black font-heading mb-10">¿Listo para unirte?</h2>
+                <!-- Info Contacto -->
+                <!-- Paddings responsivos: py-12 px-6 (móvil), lg:px-24 lg:py-20 (PC) -->
+                <div class="w-full lg:w-1/2 bg-ldc-blue text-white px-6 py-12 sm:px-10 sm:py-16 lg:px-24 flex flex-col justify-center">
+                    <div class="text-center lg:text-left">
+                        <h3 class="text-ldc-gold font-bold uppercase tracking-widest text-xs sm:text-sm mb-2">Comunícate</h3>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black font-heading mb-8 sm:mb-10">¿Listo para unirte?</h2>
+                    </div>
                     
-                    <div class="space-y-8">
-                        <div class="flex items-center gap-6">
-                            <div class="bg-white/10 p-4 rounded-full text-ldc-gold">
-                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                    <div class="space-y-6 sm:space-y-8">
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <div class="bg-white/10 p-3 sm:p-4 rounded-full text-ldc-gold shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Dirección</h4>
-                                <p class="text-gray-300">Estadio Cantonal, Chaguarpamba, Loja</p>
+                                <h4 class="font-bold text-base sm:text-lg">Dirección</h4>
+                                <p class="text-gray-300 text-sm sm:text-base">Estadio Cantonal, Chaguarpamba, Loja</p>
                             </div>
                         </div>
                         
-                        <div class="flex items-center gap-6">
-                            <div class="bg-white/10 p-4 rounded-full text-ldc-gold">
-                                <i data-lucide="phone" class="w-6 h-6"></i>
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <div class="bg-white/10 p-3 sm:p-4 rounded-full text-ldc-gold shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Teléfono / WhatsApp</h4>
-                                <p class="text-gray-300">+593 99 999 9999</p>
+                                <h4 class="font-bold text-base sm:text-lg">Teléfono / WhatsApp</h4>
+                                <p class="text-gray-300 text-sm sm:text-base">+593 99 999 9999</p>
                             </div>
                         </div>
 
-                        <div class="flex items-center gap-6">
-                            <div class="bg-white/10 p-4 rounded-full text-ldc-gold">
-                                <i data-lucide="clock" class="w-6 h-6"></i>
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <div class="bg-white/10 p-3 sm:p-4 rounded-full text-ldc-gold shrink-0">
+                                <i data-lucide="clock" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Horarios</h4>
-                                <p class="text-gray-300">Lunes a Viernes: 08:00 - 17:00</p>
+                                <h4 class="font-bold text-base sm:text-lg">Horarios</h4>
+                                <p class="text-gray-300 text-sm sm:text-base">Lunes a Viernes: 08:00 - 17:00</p>
                             </div>
                         </div>
                     </div>
 
-                    <button onclick="contactWhatsApp('Información General')" class="mt-12 w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full flex items-center justify-center gap-3 transition-colors shadow-lg">
-                        <i data-lucide="message-circle" class="w-6 h-6"></i> Escribir al WhatsApp
+                    <button onclick="contactWhatsApp('Información General')" class="mt-8 sm:mt-12 w-full lg:w-max bg-green-500 hover:bg-green-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full flex items-center justify-center gap-2 sm:gap-3 transition-colors shadow-lg">
+                        <i data-lucide="message-circle" class="w-5 h-5 sm:w-6 sm:h-6"></i> Escribir al WhatsApp
                     </button>
                 </div>
 
                 <!-- Mapa -->
-                <div class="lg:w-1/2 min-h-[400px] lg:min-h-auto bg-gray-200">
+                <!-- min-h ajustable para que no sea absurdamente grande en móviles -->
+                <div class="w-full lg:w-1/2 min-h-[300px] sm:min-h-[400px] lg:min-h-auto bg-gray-200">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1001.1483612448723!2d-79.64450000877613!3d-3.879767558598422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses!2sec!4v1767829025903!5m2!1ses!2sec" 
                         class="w-full h-full border-0" 
@@ -454,36 +471,38 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-[#061229] text-gray-400 py-12 mt-auto">
-        <div class="container mx-auto px-6 md:px-12">
+    <!-- py-12 -> py-8 en móviles para ahorrar espacio -->
+    <footer class="bg-[#061229] text-gray-400 py-8 md:py-12 mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 md:px-12">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 
                 <div class="text-center md:text-left">
-                    <div class="flex items-center gap-3 justify-center md:justify-start mb-4">
-                        <img src="https://ui-avatars.com/api/?name=LDC&background=F4B41A&color=0B2046&rounded=true" alt="" class="w-8 h-8">
-                        <span class="text-white font-heading font-bold text-xl tracking-wider">LDC CHAGUARPAMBA</span>
+                    <div class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start mb-3 sm:mb-4">
+                        <img src="https://ui-avatars.com/api/?name=LDC&background=F4B41A&color=0B2046&rounded=true" alt="" class="w-6 h-6 sm:w-8 sm:h-8">
+                        <span class="text-white font-heading font-bold text-lg sm:text-xl tracking-wider">LDC CHAGUARPAMBA</span>
                     </div>
-                    <p class="text-sm max-w-xs mx-auto md:mx-0">Trabajando por el deporte formativo y la juventud de nuestro cantón.</p>
+                    <p class="text-xs sm:text-sm max-w-xs mx-auto md:mx-0">Trabajando por el deporte formativo y la juventud de nuestro cantón.</p>
                 </div>
                 
-                <div class="flex gap-4">
-                    <a href="#" class="p-3 bg-white/5 rounded-full hover:bg-ldc-gold hover:text-ldc-blue transition-all">
-                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                <div class="flex gap-3 sm:gap-4">
+                    <a href="#" class="p-2 sm:p-3 bg-white/5 rounded-full hover:bg-ldc-gold hover:text-ldc-blue transition-all">
+                        <i data-lucide="facebook" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                     </a>
-                    <a href="#" class="p-3 bg-white/5 rounded-full hover:bg-ldc-gold hover:text-ldc-blue transition-all">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    <a href="#" class="p-2 sm:p-3 bg-white/5 rounded-full hover:bg-ldc-gold hover:text-ldc-blue transition-all">
+                        <i data-lucide="instagram" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                     </a>
                 </div>
             </div>
             
-            <div class="border-t border-white/10 mt-10 pt-8 text-center text-sm flex flex-col md:flex-row justify-between">
+            <div class="border-t border-white/10 mt-6 sm:mt-10 pt-6 sm:pt-8 text-center text-xs sm:text-sm flex flex-col md:flex-row justify-between gap-2">
                 <p>&copy; 2024 Liga Deportiva Cantonal de Chaguarpamba. Todos los derechos reservados.</p>
-                <p class="mt-2 md:mt-0">Diseñado para el futuro del deporte.</p>
+                <p>Diseñado para el futuro del deporte.</p>
             </div>
         </div>
     </footer>
 
-<script src="main.js"></script>
-
+    <!-- LÓGICA DE LA PÁGINA (Pestañas) -->
+    <script src="main.js"></script>
+    
 </body>
 </html>
