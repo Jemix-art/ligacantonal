@@ -1,28 +1,26 @@
-// 1. Inicializar iconos
+        // Inicializar iconos
         lucide.createIcons();
 
-        // 2. Variables Generales
-        const whatsappNumber = "593"; 
+        // Variables Generales
+        const whatsappNumber = "593999999999"; 
 
-        // 3. Menú Móvil
+        // Menú Móvil
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
 
-        // 4. WhatsApp Dinámico
+        // WhatsApp Dinámico
         function contactWhatsApp(deporte) {
             const mensaje = `Hola LDC Chaguarpamba. Deseo información sobre: *${deporte}*.`;
             const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
         }
 
-        // 5. Lógica de Pestañas (Mostrar/Ocultar Secciones)
+        // Lógica de Pestañas (Mostrar/Ocultar Secciones)
         function showSection(sectionId) {
-            // A. Definimos todas las secciones
             const sections = ['inicio', 'nosotros', 'disciplinas', 'directiva', 'contacto'];
             
-            // B. Ocultamos todas
             sections.forEach(id => {
                 const element = document.getElementById(id);
                 if(element) {
@@ -31,7 +29,6 @@
                 }
             });
 
-            // C. Mostramos la seleccionada
             const target = document.getElementById(sectionId);
             if(target) {
                 target.classList.remove('hidden');
@@ -41,20 +38,20 @@
                 const staggers = target.querySelectorAll('[class*="stagger-"]');
                 staggers.forEach(el => {
                     el.style.animation = 'none';
-                    void el.offsetWidth; // Forzar repintado para que la animación empiece de cero
+                    void el.offsetWidth; // Forzar repintado
                     el.style.animation = '';
                 });
 
-                // Forzamos el reinicio de la animación CSS de entrada
+                // Forzar reinicio de animación CSS de entrada
                 target.classList.remove('section-animate');
-                void target.offsetWidth; // Truco de navegador para reiniciar animación
+                void target.offsetWidth; 
                 target.classList.add('section-animate');
             }
 
-            // D. Actualizamos el estilo del menú de navegación (botones PC)
+            // Actualizar estilo del menú
             const buttons = document.querySelectorAll('nav button');
             buttons.forEach(btn => {
-                if (btn.id !== 'btn-contacto') { // Excluimos el botón de contacto que tiene su propio estilo
+                if (btn.id !== 'btn-contacto') {
                     btn.classList.remove('active-tab');
                 }
             });
@@ -64,6 +61,6 @@
                 activeBtn.classList.add('active-tab');
             }
 
-            // E. Volvemos al tope de la página
+            // Volver al tope de la página
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
